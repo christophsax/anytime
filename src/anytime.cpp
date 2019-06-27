@@ -225,6 +225,11 @@ double stringToTime(const std::string s, const bool asUTC=false, const bool asDa
 
     if (pt == ptbase) return NA_REAL; // NA for non-parsed dates
 
+    if (debug) Rcpp::Rcout << "Boost parsed as " << pt
+                           << " which is UTC " << static_cast<int>(ptToDoubleUTC(pt))
+                           << " local " << static_cast<int>(ptToDouble(pt))
+                           << " diff " << ptToDoubleUTC(pt)-ptToDouble(pt) << std::endl;
+
     if (asUTC) {
         return ptToDoubleUTC(pt, asDate);
     } else {
