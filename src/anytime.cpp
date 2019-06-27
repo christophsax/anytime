@@ -165,8 +165,8 @@ double ptToDouble(const bt::ptime & pt, const bool asDate=false) {
 
     // seconds sincr epoch (in local time) -- misses DST adjustment
     bt::time_duration tdiff = pt - local_timet_start;
-    //Rcpp::Rcout << "tdiff is " << tdiff << std::endl;
-    //Rcpp::Rcout << "pt is " << pt << std::endl;
+    if (debug) Rcpp::Rcout << "tdiff is " << tdiff << std::endl;
+    if (debug)  Rcpp::Rcout << "pt is " << pt << std::endl;
 
     if (asDate) {
         if (debug) Rcpp::Rcout << "days " << pt.date().day_number() - timet_start.date().day_number() << std::endl;
